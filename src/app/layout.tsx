@@ -1,4 +1,5 @@
 import "@/styles/index.css";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { PropsWithChildren } from "react";
@@ -21,13 +22,15 @@ export const metadata: Metadata = {
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 };
 
